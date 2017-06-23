@@ -1,0 +1,93 @@
+/**/
+.prefix(@style,@value){
+    -webkit-@{style}: @value;
+       -moz-@{style}: @value;
+        -ms-@{style}: @value;
+            @{style}: @value;
+}
+.flex(){
+	display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box; /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox; /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
+}
+.flex-1(){
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    -moz-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;    
+}
+
+@colorOrg:#f80;
+
+/*reset*/
+html{height: 100%; font-size: 20px;}
+*{margin: 0;padding: 0;list-style: none;box-sizing:border-box;}
+h1, h2, h3, h4, h5, h6{ font-size: 100%;font-weight: normal; }
+address, cite, dfn, em, var,i { font-style: normal; } 
+code, kbd, pre, samp { font-family: courier new, courier, monospace; } 
+small { font-size: .8; }
+ul, ol { list-style: none; }
+fieldset, img { border: 0; }
+button, input, select, textarea { font-size: 100%; }
+table{border-collapse: collapse; border-spacing: 0;font-size: inherit; }
+body,button,input,select,textarea{font: .7rem/1.5 "Microsoft YaHei",Helvetica;color: #333;}
+input,select,textarea{font-size:100%; outline: none;}
+button{cursor:pointer; outline: none;}
+a {text-decoration: none;outline:none;color:inherit; }
+a,button,input,textarea{-webkit-tap-highlight-color: rgba(0,0,0,0);}
+body{min-width: 320px;margin: 0 auto; background:#fff;-webkit-text-size-adjust:none;}
+
+/* float */
+.fn-left,.fn-right {display:inline;}
+.fn-left {float:left;}
+.fn-right {float:right;}
+.fn-clear{
+	*zoom: 1;
+	&:before,&:after{display:block;line-height:0;height:0;content:"";}
+	&:after{clear:both;}
+}
+.fn-hide{display: none;}
+[v-cloak] {
+    display: none;
+}
+.header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right:0;
+	height: 2rem;
+	background-color: @colorOrg;
+	color: #fff;
+	line-height: 2rem;
+	text-align: center;
+
+	& ~ .content{
+		padding-top: 2rem;
+	}
+}
+.nav-bar{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right:0;
+	.flex;
+	height: 2.5rem;
+	background-color: #f1f1f1;
+	box-shadow: 0 0 .5rem rgba(0,0,0,0.2);
+	
+	&>a{
+		.flex-1;
+		color: #666;
+		text-align: center;
+		&.active{
+			color: @colorOrg;
+		}
+	}
+
+	& ~ .content{
+		padding-bottom: 2rem;
+	}
+}
