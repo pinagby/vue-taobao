@@ -29,7 +29,7 @@ module.exports = {
         }, {
             test: /\.less$/,
             use: [
-                { loader: "less-loader" }
+                { loader: "less-loader" }       
             ]
         }, {
             test: /\.(ttf|woff|eot|svg|woff2)$/,
@@ -57,7 +57,9 @@ module.exports = {
     devServer: {
         historyApiFallback: true,
         noInfo: true,
-        port:8082
+        port:8082,
+        host:'0.0.0.0',
+        disableHostCheck: true
     },
     devtool: '#eval-source-map'
 }

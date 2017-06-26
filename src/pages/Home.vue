@@ -1,17 +1,14 @@
 <template>
   	<main-layout>
-    	<swiper v-ref:swiper
-		        direction="horizontal"
-		        :mousewheel-control="true"
-		        :performance-mode="false"
-		        :pagination-visible="true"
-		        :pagination-clickable="true"
-		        :loop="true"
-		        @slide-change-start="onSlideChangeStart"
-		        @slide-change-end="onSlideChangeEnd">
-		    <div>Page 1</div>
-		    <div>Page 2</div>
-		    <div>Page 3</div>
+    	<swiper
+	        direction="horizontal"
+	        :show-pagination="true"
+	        :loop="true"
+	        @slide-change-start="onSlideChangeStart"
+	        @slide-change-end="onSlideChangeEnd">
+		    <a href="#" class="swiper-item"><img src="/src/assets/images/banner1.jpg" alt=""></a>
+		    <a href="#" class="swiper-item"><img src="/src/assets/images/banner2.jpg" alt=""></a>
+		    <a href="#" class="swiper-item"><img src="/src/assets/images/banner3.jpg" alt=""></a>
 		</swiper>
   	</main-layout>
 </template>

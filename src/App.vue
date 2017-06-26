@@ -11,14 +11,12 @@
     </div>
 </template>
 
-
+<style lang="less">
+    @import './assets/css/fonts';
+    @import './assets/css/common';
+</style>
 <script>
   	export default {
   		created() {  }
   	}
 </script>
-
-<style lang="less">
-  	@import './assets/css/fonts';
-  	@import './assets/css/common';
-</style>
