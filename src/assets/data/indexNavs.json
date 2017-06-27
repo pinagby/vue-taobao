@@ -1,0 +1,41 @@
+[{
+    "id":"1",
+    "title":"天猫",
+    "url":"/images/index/tmall.png"
+},{
+    "id":"2",
+    "title":"聚划算",
+    "url":"/images/index/ju.png"
+},{
+    "id":"3",
+    "title":"天猫国际",
+    "url":"/images/index/tmall1.png"
+},{
+    "id":"4",
+    "title":"外卖",
+    "url":"/images/index/waimai.png"
+},{
+    "id":"5",
+    "title":"天猫超市",
+    "url":"/images/index/chaoshi.png"
+},{
+    "id":"6",
+    "title":"充值中心",
+    "url":"/images/index/charge.png"
+},{
+    "id":"7",
+    "title":"飞猪旅行",
+    "url":"/images/index/travel.png"
+},{
+    "id":"8",
+    "title":"领金币",
+    "url":"/images/index/coin.png"
+},{
+    "id":"9",
+    "title":"到家",
+    "url":"/images/index/home.png"
+},{
+    "id":"10",
+    "title":"分类",
+    "url":"/images/index/list.png"
+}]

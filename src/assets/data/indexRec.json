@@ -1,0 +1,19 @@
+{
+    "rec1":{
+        "id":"1234",
+        "imgSrc":"/images/index/rec1.jpg"
+    },
+    "rec2":{
+        "id":"1234",
+        "imgSrc":"/images/index/rec2.png"
+    },
+    "rec3":{
+        "id":"1234",
+        "imgSrc":"/images/index/rec3.jpg"
+    },
+    "rec4":{
+        "id":"1234",
+        "imgSrc":"/images/index/rec4.jpg"
+    },
+    "leftTime":"43028000"
+}

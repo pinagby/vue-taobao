@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <header id="header" class="header">
-            <h1>首页</h1>
+            <slot name="header"></slot>
         </header>
         <!-- /header -->
         <nav class="nav-bar">
@@ -21,6 +21,7 @@
             return{
                 currentUrl:this.$route.path
             }
-        }
+        },
+        computed:{}
     }
 </script>

@@ -1,15 +1,22 @@
 <template>
   	<main-layout>
+  		<!-- header start-->
+  		<div slot="header">
+  			<h1>shouye </h1>
+  		</div>
+  		<!-- header end-->
+		<!-- 轮播图 start -->
     	<swiper
-	        direction="horizontal"
 	        :show-pagination="true"
-	        :loop="true"
+	        :swiper-length="swiperLength"
 	        @slide-change-start="onSlideChangeStart"
 	        @slide-change-end="onSlideChangeEnd">
-		    <a href="#" class="swiper-item"><img src="/src/assets/images/banner1.jpg" alt=""></a>
-		    <a href="#" class="swiper-item"><img src="/src/assets/images/banner2.jpg" alt=""></a>
-		    <a href="#" class="swiper-item"><img src="/src/assets/images/banner3.jpg" alt=""></a>
+		    <a class="swiper-item" v-for="item in swipers" :href="'/detail/'+item.id"><img :src="item.image" :alt="item.title"></a>
 		</swiper>
+  		<!-- 轮播图 start -->
+		<!--  -->
+		<nav></nav>
+  		
   	</main-layout>
 </template>
 <script src="../assets/js/index.js"></script>

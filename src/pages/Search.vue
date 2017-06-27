@@ -2,11 +2,11 @@
   	<main-layout>
   		<!-- header start-->
   		<div slot="header">
-  			<h1>购物车</h1>
+  			<h1>搜索列表</h1>
   		</div>
   		<!-- header end-->
   		
-    	<h1>购物车</h1>
+    	<h1>搜索列表</h1>
   	</main-layout>
 </template>
 

@@ -11,14 +11,15 @@
 			@mousedown= "touchStartAct"
 			@mousemove="touchMoveAct"
 			@mouseup="touchEndAct"
+			@transitionend="transitionEndAct"
 			>
 			<slot></slot>
 		</div>
 		<div class="swiper-page" v-show="showPage">
 			<span 
-				v-for="(item, index) in swiperEls" 
-				:class="{active:index == activeIndex}"
-				@click="gotoPage(index)"
+				v-for="index in swiperLength" 
+				:class="{active: index-1 == activeIndex}"
+				@click="gotoPage(index-1)"
 				></span>
 		</div>
 	</div>
@@ -53,16 +54,16 @@
 			left: 0;
 			right: 0;
 			z-index: 2;
-			text-align: center;
+			text-align: right;
 
 			&>span{
 				display: inline-block;
-				width: .5rem;
-				height: .5rem;
+				width: .45rem;
+				height: .45rem;
 				margin: 0 .2rem;
 				border-radius: 50%;
 				background-color: @colorOrg;
-				opacity: 0.5;
+				opacity: 0.3;
 
 				&.active{
 					opacity: 1;
@@ -73,15 +74,8 @@
 	
 </style>
 <script>
-	const VERTICAL = 'vertical';
-    const HORIZONTAL = 'horizontal';
-
 	export default{
 		props:{
-			direction:{
-				type:String,
-				default:HORIZONTAL
-			},
 			showPage:{
 				type:Boolean,
 				default:true
@@ -89,6 +83,10 @@
 			speed:{
 				type:Number,
 				default:500
+			},
+			swiperLength:{
+				type:Number,
+				default:0
 			}
 		},
 		data(){
@@ -101,17 +99,16 @@
 				translateX:0,
 				startTranslateX:0,
 				transitionDuration:0,
-				winW:0
-			}
-		},
-		computed:{
-			itemLenth(){
-				return this.swiperEls.length
+				winW:0,
+				indexChanged:false
 			}
 		},
 		mounted() {
 			this.swiperEls = [].map.call(this.$refs.swiperList.children, el => el);
 			this.winW = document.body.clientWidth;
+		},
+		watch:{
+			swiperLength(newVal, oldVal){}
 		},
 		methods: {
 			getCurrentPos(e){
@@ -140,15 +137,23 @@
 			touchEndAct(e){
 				this.dragging = false;
 				this.transitionDuration = this.speed;
-				let currentIndex = this.activeIndex;
-				if(this.delta > 50){
-					currentIndex = currentIndex == 0 ? currentIndex : currentIndex-1;
-				}else if(this.delta<-50){
-					currentIndex = currentIndex+1 >= this.itemLenth ? currentIndex :currentIndex+1;
-				}else{
+
+				if(Math.abs(this.delta) < 50){
 					this.translateX = this.startTranslateX;
+					this.indexChanged = false;
+					return;
 				}
-				this.gotoPage(currentIndex);
+
+				let currentIndex = this.activeIndex;
+				if(this.delta > 50 && currentIndex > 0){
+					currentIndex = currentIndex-1;
+					this.$emit('slide-change-start',currentIndex);
+				}else if(this.delta<-50 && currentIndex+1 < this.swiperLength){
+					currentIndex = currentIndex+1;
+					this.$emit('slide-change-start',currentIndex);
+				}
+				this.indexChanged = true;
+				this.gotoPage(currentIndex);				
 
 				document.removeEventListener('touchmove', this.touchMoveAct);
                 document.removeEventListener('touchend', this.touchEndAct);
@@ -158,6 +163,11 @@
 			gotoPage(index){
 				this.translateX = -this.winW * index;
 				this.activeIndex = index;
+			},
+			transitionEndAct(){
+				if(this.indexChanged){
+					this.$emit('slide-change-end',this.activeIndex);
+				}
 			}
 		}
 	}

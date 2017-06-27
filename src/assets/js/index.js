@@ -1,13 +1,20 @@
 import MainLayout from '../../layouts/Main.vue';
 import Swiper from '../../components/Swiper.vue';
-// import Swiper from 'vue-swiper';
 
 export default {
     data() {
-        return {}
+        return {
+            swipers:[],
+            swiperLength:0
+        }
     },
-    created() {
-        
+    mounted() {
+        this.$http
+            .get('/src/assets/data/swiper.json')
+            .then(response => {
+                this.swipers = response.body;
+                this.swiperLength = this.swipers.length;
+            });
     },
     components: {
         MainLayout,

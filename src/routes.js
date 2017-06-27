@@ -13,6 +13,8 @@ import App from './App.vue'
 const Home = resolve => require.ensure([], () => resolve(require('./pages/Home.vue')), 'home');
 const Chart = r => require.ensure([], () => r(require('./pages/Chart.vue')), 'chart');
 const UCenter = r => require.ensure([], () => r(require('./pages/UCenter.vue')), 'ucenter');
+const Detail = r => require.ensure([], () => r(require('./pages/Detail.vue')), 'detail');
+const Search = r => require.ensure([], () => r(require('./pages/Search.vue')), 'search');
 
 export default [{
     path: '/',
@@ -30,5 +32,11 @@ export default [{
     },{
     	path:'/ucenter',
     	component:UCenter
+    },{
+        path:'/detail/:id',
+        component:Detail
+    },{
+        path:'/search/:keyword',
+        component:Search
     }]
 }];
