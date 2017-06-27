@@ -8,6 +8,9 @@
 			@touchstart= "touchStartAct"
 			@touchmove="touchMoveAct"
 			@touchend="touchEndAct"
+			@mousedown= "touchStartAct"
+			@mousemove="touchMoveAct"
+			@mouseup="touchEndAct"
 			>
 			<slot></slot>
 		</div>
@@ -119,12 +122,23 @@
 				this.startTranslateX = this.translateX
 				this.dragging = true;
 				this.transitionDuration = 0;
+
+				document.addEventListener('touchmove', this.touchMoveAct, false);
+                document.addEventListener('touchend', this.touchEndAct, false);
+                document.addEventListener('mousemove', this.touchMoveAct, false);
+                document.addEventListener('mouseup', this.touchEndAct, false);
 			},
 			touchMoveAct(e){
+				if(!this.dragging) return;
 				this.delta = this.getCurrentPos(e)-this.startPos;
 				this.translateX = this.startTranslateX + this.delta;
+
+				if ( Math.abs(this.delta) > 0) {
+                    e.preventDefault();
+                }
 			},
 			touchEndAct(e){
+				this.dragging = false;
 				this.transitionDuration = this.speed;
 				let currentIndex = this.activeIndex;
 				if(this.delta > 50){
@@ -135,6 +149,11 @@
 					this.translateX = this.startTranslateX;
 				}
 				this.gotoPage(currentIndex);
+
+				document.removeEventListener('touchmove', this.touchMoveAct);
+                document.removeEventListener('touchend', this.touchEndAct);
+                document.removeEventListener('mousemove', this.touchMoveAct);
+                document.removeEventListener('mouseup', this.touchEndAct);
 			},
 			gotoPage(index){
 				this.translateX = -this.winW * index;
