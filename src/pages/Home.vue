@@ -1,8 +1,11 @@
 <template>
   	<main-layout>
   		<!-- header start-->
-  		<div slot="header">
-  			<h1>shouye </h1>
+  		<div class="header-search" slot="header">
+  			<i class="iconfont icon-tao"></i>
+            <a class="search" href="/search">
+                <i class="iconfont icon-search"></i> 寻找宝贝店铺
+            </a>
   		</div>
   		<!-- header end-->
 		<!-- 轮播图 start -->
@@ -14,9 +17,36 @@
 		    <a class="swiper-item" v-for="item in swipers" :href="'/detail/'+item.id"><img :src="item.image" :alt="item.title"></a>
 		</swiper>
   		<!-- 轮播图 start -->
-		<!--  -->
-		<nav></nav>
+		<!-- 首页导航 -->
+		<nav>
+            <a @click.prevent="goToSearchPage" href="#">搜索</a>      
+        </nav>
   		
   	</main-layout>
 </template>
+<style lang="less" scoped>
+    @import '../assets/css/common';
+    .header-search{
+        .flex;
+        padding: .35rem;
+        line-height: 1.3rem;
+
+        &>.icon-tao{
+            font-size: 1.2rem;
+        }
+
+        .search{
+            display: inline-block;
+            .flex-1;
+            margin-left: .5rem;
+            background: rgba(0,0,0,0.2);
+            border-radius: .25rem;
+            
+            &>.icon-search{
+                font-size: .8rem;
+                vertical-align: middle;
+            }
+        }
+    }
+</style>
 <script src="../assets/js/index.js"></script>

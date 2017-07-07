@@ -7,6 +7,7 @@
   		<!-- header end-->
   		
     	<h1>搜索列表</h1>
+      <p>keyword:{{$route.params.keyword}}</p>
   	</main-layout>
 </template>
 
