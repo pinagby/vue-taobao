@@ -19,7 +19,10 @@
   		<!-- 轮播图 start -->
 		<!-- 首页导航 -->
 		<nav>
-            <a @click.prevent="goToSearchPage" href="#">搜索</a>      
+            <a href="#">
+                <img src="../assets/images/tmall.png">
+                <p>天猫</p>
+            </a>      
         </nav>
   		
   	</main-layout>

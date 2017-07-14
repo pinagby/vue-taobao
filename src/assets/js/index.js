@@ -28,7 +28,6 @@ export default {
             console.log('onSlideChangeEnd', currentPage);
         },
         goToSearchPage () {
-            console.log(123);
             this.$router.push({ name: 'search', params: { keyword: ' ' }});
         }
     },
