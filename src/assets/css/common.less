@@ -20,10 +20,53 @@
     flex: 1;    
 }
 
+.keyframes (@prefix, @name, @content) when (@prefix=def) {
+    @keyframes @name {
+        @content();
+    }
+}
+
+.keyframes (@prefix, @name, @content) when (@prefix=moz) {
+    @-moz-keyframes @name {
+        @content();
+    }
+}
+
+.keyframes (@prefix, @name, @content) when (@prefix=ms) {
+    @-ms-keyframes @name {
+        @content();
+    }
+}
+
+.keyframes (@prefix, @name, @content) when (@prefix=webkit) {
+    @-webkit-keyframes @name {
+        @content();
+    }
+}
+
+.keyframes (@prefix, @name, @content) when (@prefix=all) {
+    .keyframes(moz, @name, @content);
+    .keyframes(ms, @name, @content);
+    .keyframes(webkit, @name, @content);
+    .keyframes(def, @name, @content);
+}
+//例子
+.keyframes(all,spin,{
+    0% {
+        .prefix(transform,rotate(0));
+    }
+    100% {
+        .prefix(transform,rotate(359deg));
+    }
+});
+
 @colorOrg:#FE5400;
+@colorBlue:#4bc6f1;
+@colorRed:#ff4a90;
+@colorMRed:#fd4e3f;
 
 /*reset*/
-html{height: 100%; font-size: 20px;}
+html{height: 100%; font-size: 20px;background: rgb(238, 238, 238);}
 *{margin: 0;padding: 0;list-style: none;box-sizing:border-box;}
 h1, h2, h3, h4, h5, h6{ font-size: 100%;font-weight: normal; }
 address, cite, dfn, em, var,i { font-style: normal; } 
@@ -38,7 +81,7 @@ input,select,textarea{font-size:100%; outline: none;}
 button{cursor:pointer; outline: none;}
 a {text-decoration: none;outline:none;color:inherit; }
 a,button,input,textarea{-webkit-tap-highlight-color: rgba(0,0,0,0);}
-body{min-width: 320px;margin: 0 auto; background:#fff;-webkit-text-size-adjust:none;}
+body{min-width: 320px;margin: 0 auto;-webkit-text-size-adjust:none;}
 
 /* float */
 .fn-left,.fn-right {display:inline;}
@@ -50,6 +93,27 @@ body{min-width: 320px;margin: 0 auto; background:#fff;-webkit-text-size-adjust:n
 	&:after{clear:both;}
 }
 .fn-hide{display: none;}
+.ellipsis{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow:ellipsis;
+}
+.color-org{
+    color: @colorOrg !important;
+}
+.color-blue{
+    color: @colorBlue !important;
+}
+.color-mred{
+    color: @colorRed !important;
+}
+.color-red{
+    color: @colorMRed !important;
+}
+.mt-10{
+	margin-top: .5rem !important;
+}
+
 [v-cloak] {
     display: none;
 }
@@ -90,6 +154,6 @@ body{min-width: 320px;margin: 0 auto; background:#fff;-webkit-text-size-adjust:n
 	}
 
 	& ~ .content{
-		padding-bottom: 2rem;
+		padding-bottom: 2.5rem;
 	}
 }

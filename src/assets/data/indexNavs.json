@@ -1,41 +1,41 @@
 [{
     "id":"1",
     "title":"天猫",
-    "url":"/images/index/tmall.png"
+    "url":"/src/assets/images/tmall.png"
 },{
     "id":"2",
     "title":"聚划算",
-    "url":"/images/index/ju.png"
+    "url":"/src/assets/images/ju.png"
 },{
     "id":"3",
     "title":"天猫国际",
-    "url":"/images/index/tmall1.png"
+    "url":"/src/assets/images/tmall1.png"
 },{
     "id":"4",
     "title":"外卖",
-    "url":"/images/index/waimai.png"
+    "url":"/src/assets/images/waimai.png"
 },{
     "id":"5",
     "title":"天猫超市",
-    "url":"/images/index/chaoshi.png"
+    "url":"/src/assets/images/chaoshi.png"
 },{
     "id":"6",
     "title":"充值中心",
-    "url":"/images/index/charge.png"
+    "url":"/src/assets/images/charge.png"
 },{
     "id":"7",
     "title":"飞猪旅行",
-    "url":"/images/index/travel.png"
+    "url":"/src/assets/images/travel.png"
 },{
     "id":"8",
     "title":"领金币",
-    "url":"/images/index/coin.png"
+    "url":"/src/assets/images/coin.png"
 },{
     "id":"9",
     "title":"到家",
-    "url":"/images/index/home.png"
+    "url":"/src/assets/images/home.png"
 },{
     "id":"10",
     "title":"分类",
-    "url":"/images/index/list.png"
+    "url":"/src/assets/images/list.png"
 }]

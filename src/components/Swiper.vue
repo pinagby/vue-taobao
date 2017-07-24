@@ -24,7 +24,6 @@
 		</div>
 	</div>
 </template>
-<!-- <link rel="stylesheet/less" type="text/css" href="./assets/css/common.less"> -->
 <style lang='less' scoped>
 	@import '../assets/css/common';
 	.swiper{
@@ -87,6 +86,10 @@
 			swiperLength:{
 				type:Number,
 				default:0
+			},
+			interval:{
+				type:Number,
+				default:3000
 			}
 		},
 		data(){
@@ -100,12 +103,17 @@
 				startTranslateX:0,
 				transitionDuration:0,
 				winW:0,
-				indexChanged:false
+				indexChanged:false,
+				timer:null
 			}
 		},
 		mounted() {
+			let that = this;
 			this.swiperEls = [].map.call(this.$refs.swiperList.children, el => el);
 			this.winW = document.body.clientWidth;
+			this.timer = setInterval(function(){
+				that.next();
+			},that.interval);
 		},
 		watch:{
 			swiperLength(newVal, oldVal){}
@@ -115,10 +123,12 @@
 				return e.changedTouches ? e.changedTouches[0]['pageX'] : e['pageX'];
 			},
 			touchStartAct(e){
+				let that = this;
 				this.startPos = this.getCurrentPos(e);
 				this.startTranslateX = this.translateX
 				this.dragging = true;
 				this.transitionDuration = 0;
+				clearInterval(that.timer);
 
 				document.addEventListener('touchmove', this.touchMoveAct, false);
                 document.addEventListener('touchend', this.touchEndAct, false);
@@ -135,6 +145,7 @@
                 }
 			},
 			touchEndAct(e){
+				let that = this;
 				this.dragging = false;
 				this.transitionDuration = this.speed;
 
@@ -153,7 +164,11 @@
 					this.$emit('slide-change-start',currentIndex);
 				}
 				this.indexChanged = true;
-				this.gotoPage(currentIndex);				
+				this.gotoPage(currentIndex);
+
+				this.timer = setInterval(function(){
+					that.next();
+				},that.interval);			
 
 				document.removeEventListener('touchmove', this.touchMoveAct);
                 document.removeEventListener('touchend', this.touchEndAct);
@@ -168,6 +183,15 @@
 				if(this.indexChanged){
 					this.$emit('slide-change-end',this.activeIndex);
 				}
+			},
+			next(){
+				this.transitionDuration = this.speed
+				let currentIndex = this.activeIndex
+				currentIndex ++;
+				currentIndex = currentIndex >= this.swiperLength ? 0 : currentIndex;
+				this.$emit('slide-change-start',currentIndex);
+				this.indexChanged = true;
+				this.gotoPage(currentIndex);
 			}
 		}
 	}
