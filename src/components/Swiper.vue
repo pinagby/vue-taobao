@@ -125,7 +125,7 @@
 			touchStartAct(e){
 				let that = this;
 				this.startPos = this.getCurrentPos(e);
-				this.startTranslateX = this.translateX
+				this.startTranslateX = this.translateX;
 				this.dragging = true;
 				this.transitionDuration = 0;
 				clearInterval(that.timer);

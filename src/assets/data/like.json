@@ -1,31 +1,31 @@
 [{
     "id":"1",
-    "imgSrc":"/images/index/like1.jpg",
+    "imgSrc":"/src/assets/images/like1.jpg",
     "title":"[为你推荐]多功能宿舍床上懒人沙发飘窗榻榻米电脑地板无腿休闲单人折叠躺椅",
     "price":"248.99"
 },{
     "id":"2",
-    "imgSrc":"/images/index/like2.jpg",
+    "imgSrc":"/src/assets/images/like2.jpg",
     "title":"[为你推荐]全棉空调被春秋被绗缝被 纯棉衍缝被床盖三件套秋冬纯色加厚 夏被",
     "price":"179.0"
 },{
     "id":"3",
-    "imgSrc":"/images/index/like3.jpg",
+    "imgSrc":"/src/assets/images/like3.jpg",
     "title":"[为你推荐]【天天特价】纯棉三层纱布枕巾情侣枕头毛巾不掉毛柔软一对两条装",
     "price":"21.6"
 },{
     "id":"4",
-    "imgSrc":"/images/index/like4.jpg",
+    "imgSrc":"/src/assets/images/like4.jpg",
     "title":"[为你推荐]三彩水晶果 珍珠奶茶原料杂果 五彩水晶椰果粒魔芋冻 1000g包邮",
     "price":"12.0"
 },{
     "id":"5",
-    "imgSrc":"/images/index/like5.jpg",
+    "imgSrc":"/src/assets/images/like5.jpg",
     "title":"[为你推荐]【天猫超市】亿滋 冲饮菓珍果味饮料菓珍壶嘴装混合蜜桃味400g",
     "price":"15.73"
 },{
     "id":"6",
-    "imgSrc":"/images/index/like6.jpg",
+    "imgSrc":"/src/assets/images/like6.jpg",
     "title":"[为你推荐]开关贴墙贴树脂创意卡通动物可爱欧式客厅插座保护套现代简约装饰",
     "price":"16.0"
 }]

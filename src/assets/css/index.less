@@ -161,3 +161,50 @@
         margin: 0 auto;
     }
 }
+
+.like-blk{
+    &>.title{
+        padding: .5rem .5rem 0;
+        font-weight: bold;
+        text-align: center;
+
+        &>h2{
+            font-size: .8rem;
+            font-weight: bold;
+        }
+    }
+}
+
+.like-list{
+    padding: .25rem;
+
+    &>li{
+        float: left;
+        width: 50%;
+        padding: .25rem;
+
+        &>a{
+            display: block;
+            padding: .25rem;
+            background:#fff;
+            border-radius: .25rem;
+
+            &>img{
+                display: block;
+                width: 100%;
+                margin-bottom: .25rem;
+            }
+
+            &>h3{
+                height:2.78em;
+                text-overflow:ellipsis;
+                overflow:hidden;
+                display:-webkit-box;
+                -webkit-line-clamp:2;
+                -webkit-box-orient:vertical;
+            }
+        }
+    }
+}
+
+

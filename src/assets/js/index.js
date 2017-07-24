@@ -10,6 +10,7 @@ export default {
             navs:[],
             news:[],
             newsY:0,
+            likes:[],
             ad:{}
         }
     },
@@ -47,6 +48,13 @@ export default {
             .get('/src/assets/data/ad.json')
             .then(response => {
                 this.ad = response.body;
+            });
+        //猜你喜欢
+        
+        this.$http
+            .get('/src/assets/data/like.json')
+            .then(response => {
+                this.likes = response.body;
             });
     },
     components: {

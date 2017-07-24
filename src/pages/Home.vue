@@ -78,37 +78,15 @@
         <!-- 猜你喜欢 -->
         <div class="like-blk">
             <div class="title">
-                <h2>猜你喜欢</h2>
+                <h2><i class="iconfont icon-like color-red"></i> 猜你喜欢</h2>
                 <p>实时推荐最适合你的宝贝</p>
             </div>
-
-            <ul class="like-list">
-                <li>
-                    <a href="#">
-                        <img src="/src/assets/images/like1.jpg">
-                        <h3>[为你推荐]多功能宿舍床上懒人沙发飘窗榻榻米电脑地板无腿休闲单人折叠躺椅</h3>
-                        <p class="color-org">￥248.99</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="/src/assets/images/like1.jpg">
-                        <h3>[为你推荐]多功能宿舍床上懒人沙发飘窗榻榻米电脑地板无腿休闲单人折叠躺椅</h3>
-                        <p class="color-org">￥248.99</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="/src/assets/images/like1.jpg">
-                        <h3>[为你推荐]多功能宿舍床上懒人沙发飘窗榻榻米电脑地板无腿休闲单人折叠躺椅</h3>
-                        <p class="color-org">￥248.99</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="/src/assets/images/like1.jpg">
-                        <h3>[为你推荐]多功能宿舍床上懒人沙发飘窗榻榻米电脑地板无腿休闲单人折叠躺椅</h3>
-                        <p class="color-org">￥248.99</p>
+            <ul class="like-list fn-clear">
+                <li v-for="item in likes">
+                    <a :href="'/detail/'+item.id">
+                        <img :src="item.imgSrc" :alt="item.title">
+                        <h3>{{item.title}}</h3>
+                        <p class="color-org">￥{{item.price}}</p>
                     </a>
                 </li>
             </ul>
