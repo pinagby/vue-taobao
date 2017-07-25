@@ -11,6 +11,9 @@ export default {
             news:[],
             newsY:0,
             likes:[],
+            likePage:0,
+            likeLoading:false,
+            likeLoaded:false,
             ad:{}
         }
     },
@@ -49,8 +52,8 @@ export default {
             .then(response => {
                 this.ad = response.body;
             });
+
         //猜你喜欢
-        
         this.$http
             .get('/src/assets/data/like.json')
             .then(response => {
@@ -71,6 +74,28 @@ export default {
         },
         goToSearchPage () {
             this.$router.push({ name: 'search', params: { keyword: ' ' }});
+        },
+        loadMoreLike(){
+            let that = this;
+            if(that.likeLoading || that.likeLoaded){
+                return;
+            }
+            that.likeLoading = true;
+            this.$http
+                .get('/src/assets/data/like.json',{ page: that.likePage+1 })
+                .then(response => {
+                    that.likeLoading = false;
+                    that.likePage ++;
+
+                    let newLikes = response.body,
+                        i = 0,
+                        len = newLikes.length;
+                    for( ; i<len; i++ ){
+                        this.likes.push(newLikes[i]);
+                    }
+
+                    that.likeLoaded = newLikes.length<10;
+                });
         }
     },
     computed: {

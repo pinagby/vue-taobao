@@ -42,7 +42,7 @@
                 <a href="#">
                     <h2 class="color-org"><i class="iconfont icon-time"></i> 淘抢购</h2>
                     <p>限时限量汇全网好货</p>
-                    <counterdown :seconds="23456"></counterdown>
+                    <counterdown :seconds="3600"></counterdown>
                     <img src="/src/assets/images/rec1.jpg">
                 </a>
             </li>
@@ -81,7 +81,7 @@
                 <h2><i class="iconfont icon-like color-red"></i> 猜你喜欢</h2>
                 <p>实时推荐最适合你的宝贝</p>
             </div>
-            <ul class="like-list fn-clear">
+            <ul class="like-list fn-clear" v-scroll="loadMoreLike">
                 <li v-for="item in likes">
                     <a :href="'/detail/'+item.id">
                         <img :src="item.imgSrc" :alt="item.title">
@@ -90,6 +90,16 @@
                     </a>
                 </li>
             </ul>
+            <div class="loading" v-show='likeLoading'>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="data-loaded" v-show="likeLoaded">
+                <span>我是有底线的</span>
+            </div>
         </div>
   	</main-layout>
 </template>

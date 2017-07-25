@@ -50,15 +50,6 @@
     .keyframes(webkit, @name, @content);
     .keyframes(def, @name, @content);
 }
-//例子
-.keyframes(all,spin,{
-    0% {
-        .prefix(transform,rotate(0));
-    }
-    100% {
-        .prefix(transform,rotate(359deg));
-    }
-});
 
 @colorOrg:#FE5400;
 @colorBlue:#4bc6f1;
@@ -93,6 +84,8 @@ body{min-width: 320px;margin: 0 auto;-webkit-text-size-adjust:none;}
 	&:after{clear:both;}
 }
 .fn-hide{display: none;}
+
+/* tools */
 .ellipsis{
 	white-space: nowrap;
 	overflow: hidden;
@@ -114,6 +107,65 @@ body{min-width: 320px;margin: 0 auto;-webkit-text-size-adjust:none;}
 	margin-top: .5rem !important;
 }
 
+/*loading*/
+.keyframes(all,stretchdelay,{
+	0%, 40%, 100% { 
+		.prefix(transform,scaleY(0.4));
+	} 
+	20% { 
+		.prefix(transform,scaleY(1));
+	}
+});
+.loading {
+	height: 2.5rem;
+	text-align: center;
+
+	&>span{
+		position: relative;
+		top: 20%;
+		background-color: rgba(0, 0, 0, 0.2);
+		height: 60%;
+		width: 3px;
+		display: inline-block;
+		.prefix(animation,stretchdelay 1.2s infinite ease-in-out);
+
+		&:nth-child(2){
+			.prefix(animation-delay, -1.1s);
+		}
+
+		&:nth-child(3){
+			.prefix(animation-delay, -1.0s);
+		}
+
+		&:nth-child(4){
+			.prefix(animation-delay, -.9s);
+		}
+
+		&:nth-child(5){
+			.prefix(animation-delay, -.8s);
+		}
+	}
+}
+.data-loaded{
+	position: relative;
+	height: 0;
+	margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
+	border-top: 1px solid #ccc;
+	text-align: center;
+
+	&>span{
+		position: relative;
+		top: -.5rem;
+		display: inline-block;
+		padding: 0 1rem;
+		background-color: #eee;
+		line-height: 1rem;
+		color: #999;
+	}
+}
+
+/* common */
 [v-cloak] {
     display: none;
 }

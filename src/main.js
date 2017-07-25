@@ -13,6 +13,17 @@ if ('addEventListener' in document) {
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
+Vue.directive('scroll',{
+	bind(el, binding, vnode){
+		window.addEventListener('scroll',function(){
+			if(document.body.scrollTop + window.innerHeight >= el.offsetTop + el.clientHeight) {  
+			  	let scrollFunc = binding.value;
+				scrollFunc();
+			}
+		});
+	}
+});
+
 const router = new VueRouter({
     mode: 'history',
     routes
